@@ -1,16 +1,21 @@
 # 前言
 
+本项目旨在实现基于OpenVINO在LabVIEW中部署YOLOv8目标检测模型
+请读者先克隆源代码到本地：
 
-安装视觉工具包之前，**请先安装2018或更高版本64位LabVIEW **，关于LabVIEW的安装，网上有很多教程，这里就不再赘述，为了能够成功安装运行LabVIEW_OpenVINO_Demo.vi，**请先升级VIPM并安装AI视觉工具包**。
+git clone https://github.com/wangstoudamire/lv_yolov8_openvino 
 
-> 工具包下载链接
-> https://download.csdn.net/download/virobotics/18434228
+按照以下步骤安装相关工具包，然后运行LabVIEW_OpenVINO_Demo.vi（运行之前请确保电脑已联网）
+
+注：**请先安装2018或更高版本64位LabVIEW **。
+
+> 工具包下载链接：
+>
+> https://pan.baidu.com/s/1me4_54pObEo8oDqUSTHOdw?pwd=yiku 
 
 # 一、升级VIPM
 
   1. 下载工具包并打开解压后的文件夹，双击运行【**vipm-21.0.2750-windows-setup.exe**】开始安装；
-
- ![在这里插入图片描述](https://img-blog.csdnimg.cn/a53991bdaaeb4ac68b627aa83bd58d74.png#pic_center)
 
   2. 直接下一步；
 
@@ -51,22 +56,42 @@
 
 1. 打开解压后的文件夹，双击运行【**techforce_lib_opencv_cpu-1.0.0.xx.vip**】开始安装；
 
-  ![在这里插入图片描述](https://img-blog.csdnimg.cn/def7dc21452e40de863015594dbc7f63.png#pic_center)
+
+ 2. 等待几秒钟会出现如下界面，点击Install进行安装 ； 	![在这里插入图片描述](https://img-blog.csdnimg.cn/264afefec2bf4cadadd4bcd644039057.png#pic_center)
+
+ 3. 安装需要几分钟，等待一会，出现如下界面，全部勾选，并点击continue; 	![在这里插入图片描述](https://img-blog.csdnimg.cn/b4622f7fff5c43a39fac726e7b11fdfe.png#pic_center)
+
+ 4. 点击‘Yes,I accept......’
+
+    ​	![在这里插入图片描述](https://img-blog.csdnimg.cn/85cac4df661b4037aa9185bcdef8f894.png#pic_center)
+
+5. 如下图所示，均显示为No Errors即成功安装，点击Finishj即可；
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/43087e252947458d9cd6cb2eb41f3fdb.png#pic_center)
+
+6. 成功安装后打开LabVIEW并新建VI，在**程序框图面板**(记得是<font color="red">程序框图面板，不是前面板</font>哦)中鼠标右键-->点击Addons-->可以看到附加工具包Addons中多了一项"VIRobotics"-->点击VIRobotics-->点击函数选版opencv_yiku，可以找到我们刚刚安装好的工具包中所有的机器视觉相关函数。
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/9141fa03136f4cb7842e782c9152ffe8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAdmlyb2JvdGljcw==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+# 三、OpenVINO工具包的安装
+
+ 1.安装前<font face="SimSun" color=red size=4>请将labview.exe设置为管理员启动</font>，如下图（安装完成后请记得改回）
+![在这里插入图片描述](https://img-blog.csdnimg.cn/ff215d6adc5849d39809454858d27788.png#pic_center)
+
+ 2.管理员身份打开vipm
+
+ 3.双击并运行【**virobotics_lib_openvino-1.0.0.9.vip**】开始安装，安装过程会自动安装OpenVINO驱动包；
+
+ 4.等待几秒钟会出现如下界面，点击**Install**进行安装 ；
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/e1a696a78b964967bdafc95c7eeb1b99.png#pic_center)
 
 
-  2. 等待几秒钟会出现如下界面，点击Install进行安装 ； 	![在这里插入图片描述](https://img-blog.csdnimg.cn/264afefec2bf4cadadd4bcd644039057.png#pic_center)
-
-  3. 安装需要几分钟，等待一会，出现如下界面，全部勾选，并点击continue; 	![在这里插入图片描述](https://img-blog.csdnimg.cn/b4622f7fff5c43a39fac726e7b11fdfe.png#pic_center)
-
-  4. 点击‘Yes,I accept......’	![在这里插入图片描述](https://img-blog.csdnimg.cn/85cac4df661b4037aa9185bcdef8f894.png#pic_center)
-
- 5. 如下图所示，均显示为No Errors即成功安装，点击Finishj即可；
-    ![在这里插入图片描述](https://img-blog.csdnimg.cn/43087e252947458d9cd6cb2eb41f3fdb.png#pic_center)
-
- 6. 成功安装后打开LabVIEW并新建VI，在**程序框图面板**(记得是<font color="red">程序框图面板，不是前面板</font>哦)中鼠标右键-->点击Addons-->可以看到附加工具包Addons中多了一项"VIRobotics"-->点击VIRobotics-->点击函数选版opencv_yiku，可以找到我们刚刚安装好的工具包中所有的机器视觉相关函数。
-    ![在这里插入图片描述](https://img-blog.csdnimg.cn/9141fa03136f4cb7842e782c9152ffe8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAdmlyb2JvdGljcw==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+ 	
+ 5 安装需要几分钟，等待一会，出现如下界面，均显示为No Errors即成功安装，点击Finish即可；
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/c8ef6fa0e187428f9acaca339882f889.png#pic_center)
 
 
+ 6.成功安装后重启LabVIEW并新建VI，在**程序框图面板**(记得是<font color="red">程序框图面板，不是前面板</font>哦)中鼠标右键-->点击Addons-->可以看到附加工具包Addons中多了一项"VIRobotics"-->点击VIRobotics-->点击函数选版OpenVINO，可以找到我们刚刚安装好的工具包中OpenVINO的相关函数。
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/91f02da2b00f441cb23751e3f805103d.png#pic_center)
 
 # 联系我们
 
@@ -88,7 +113,7 @@
 
 微信号：jq15235256338
 
-
+**添加微信请备注：yolov8_openvino**
 
 **微信公众号**：VIRobotics
 
