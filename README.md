@@ -101,21 +101,15 @@ git clone https://github.com/wangstoudamire/lv_yolov8_openvino
 
 **公司创始人：王立奇**
 
-邮箱：248996085@qq.com
+邮箱：wangliqi@virobotics.net
 
 微信号：wangstoudamire
 
-
-
-**研发工程师：李俊青**
-
-邮箱：1784655918@qq.com
-
-微信号：jq15235256338
-
 **添加微信请备注：yolov8_openvino**
+
 
 **微信公众号**：VIRobotics
 
-如您想要探讨更多关于LabVIEW与人工智能技术，欢迎加入我们的技术交流群：705637299。进群请备注：yolov8_openvino
+**官网**：https://www.virobotics.net/
 
+如您想要探讨更多关于LabVIEW与人工智能技术，欢迎加入我们的技术交流群：705637299。进群请备注：yolov8_openvino
