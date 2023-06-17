@@ -1,5 +1,9 @@
 # 前言
 
+本项目仅用于教育目的。
+该项目的商业使用需要联系我们（[VIRobotics](https://www.virobotics.net/)）进行商业授权。
+未经事先许可，不得对代码进行修改或推导。
+
 本项目旨在实现基于OpenVINO在LabVIEW中部署YOLOv8目标检测模型
 请读者先克隆源代码到本地：
 
